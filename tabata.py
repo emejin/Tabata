@@ -10,7 +10,7 @@ class Tabata:
     def set_num_sets(self, num_sets):
         if isinstance(num_sets, int):
             self._num_sets = num_sets
-            return True
+            return num_sets
         else:
             print("Not an integer")
             return False
@@ -18,7 +18,7 @@ class Tabata:
     def set_num_cycles(self, num_cycles):
         if isinstance(num_cycles, int):
             self._num_cycles = num_cycles
-            return True
+            return num_cycles
         else:
             print("Not an integer")
             return False
@@ -27,7 +27,7 @@ class Tabata:
     def set_rest_time(self, rest_t):
         if isinstance(rest_t, int):
             self._rest_t = rest_t
-            return True
+            return rest_t
         else:
             print("Not an integer")
             return False
@@ -35,7 +35,7 @@ class Tabata:
     def set_exercise_time(self, exercise_t):
         if isinstance(exercise_t, int):
             self._exercise_t = exercise_t
-            return True
+            return exercise_t
         else:
             print("Not an integer")
             return False

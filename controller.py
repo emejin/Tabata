@@ -1,14 +1,13 @@
-from tabata import Tabata
-from view import View
 import time
 from playsound import playsound
+import tkinter as tk
 
 #TODO: Sound
 
 class Controller:
-    def __init__(self, num_sets=8, num_cycles=5, exercise_t=30, rest_t=15):
-        self.model = Tabata(num_sets, num_cycles, exercise_t, rest_t)
-        self.view = View(exercise_t, num_sets, num_cycles)
+    def __init__(self, model, view):
+        self.model = model
+        self.view = view
 
     def _countdown(self, t):
         while t:
@@ -48,14 +47,22 @@ class Controller:
 
         print("Exercise finished!")
         playsound("sounds/completed.mp3")
-        mins, secs = divmod(num_cycles*num_sets*(rest_t+exercise_t), 60)
-        duration = '{:02d}:{:02d}'.format(mins, secs)
-        self.view.workout_summary(duration)
-        self.view.root.mainloop()
+
+        #self.view.root.mainloop()
+
+    def start(self):
+        num_cycles = self.model.set_num_cycles(int(self.view.cycles.get()))
+        num_sets = self.model.set_num_sets(int(self.view.sets.get()))
+        exercise_t = self.model.set_exercise_time(int(self.view.exercise.get()))
+        rest_t = self.model.set_rest_time(int(self.view.rest.get()))
+
+        newWindow = tk.Toplevel()
+        self.view = WorkoutView(newWindow, exercise_t, num_sets, num_cycles)
+        self.run()
+
 
 def main():
-    tabata = Controller(2, 1, 15, 10)
-    tabata.run()
+    tabata = Controller()
 
 
 if __name__ == "__main__":
