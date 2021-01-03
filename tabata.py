@@ -40,6 +40,22 @@ class Tabata:
             print("Not an integer")
             return False
 
+    def get_num_sets(self):
+        return self._num_sets
+
+    def get_num_cycles(self):
+        return self._num_cycles
+
+    def get_exercise_t(self):
+        return self._exercise_t
+
+    def get_rest_t(self):
+        return self._rest_t
+
+    ###########################################################################
+    ###################### Not part of the MVC framework ######################
+    ###########################################################################
+
     def _countdown(self, t):
         while t:
             mins, secs = divmod(t, 60)
@@ -47,9 +63,6 @@ class Tabata:
             print(timer, end="\r")
             time.sleep(1)
             t -= 1
-
-    def go(self):
-        #Something special
 
     def start_exercise(self):
         for curr_c in range(0, self._num_cycles):
