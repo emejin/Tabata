@@ -59,6 +59,8 @@ class View:
         exercise_t = self.model.set_exercise_time(int(self.exercise.get()))
         rest_t = self.model.set_rest_time(int(self.rest.get()))
 
+        self.root.wm_state('iconic')
+
         newWindow = tk.Toplevel(self.root)
         wv = WorkoutView(newWindow, exercise_t, num_sets, num_cycles)
 
@@ -125,12 +127,13 @@ class WorkoutView:
         tk.Label(self.root, text="Set", borderwidth=1, font=("Arial", 44, "bold")).grid(row=3, column=0, columnspan=1)
 
         tk.Label(self.root, text="Cycle", borderwidth=1, font=("Arial", 44, "bold")).grid(row=3, column=1, columnspan=1)
+
     # Obj is instance of StringVar.
     def update(self, obj, text):
         obj.set(text)
         self.root.update()
 
-    #Obj is instance of tk.Label. Color is a string.
+    # Obj is instance of tk.Label. Color is a string.
     def change_color(self, color):
         self.timer_label.configure(fg=color)
         self.root.update()
