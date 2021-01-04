@@ -2,7 +2,6 @@ import time
 from playsound import playsound
 import tkinter as tk
 
-#TODO: Sound
 
 class Controller:
     def __init__(self, model, view):

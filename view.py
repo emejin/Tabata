@@ -81,6 +81,7 @@ class View:
 
         self.root.mainloop()
 
+
 class WorkoutView:
     def __init__(self, root, t, num_sets, num_cycles):
         self.root = root
@@ -137,6 +138,7 @@ class WorkoutView:
     def change_color(self, color):
         self.timer_label.configure(fg=color)
         self.root.update()
+
 
 class SummaryView:
     def __init__(self, root, duration):

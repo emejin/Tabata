@@ -2,6 +2,7 @@ import tkinter as tk
 from controller import ProperController
 from tabata import Tabata
 
+
 class View(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
@@ -25,6 +26,7 @@ class View(tk.Tk):
     def change_color(self, obj, color):
         obj.configure(fg=color)
         self.update()
+
 
 class SettingsFrame(tk.Frame):
     def __init__(self, master=None, **kwargs):
@@ -153,6 +155,7 @@ class WorkoutFrame(tk.Frame):
         mins, secs = divmod(num_cycles*num_sets*exercise_t, 60)
         duration = '{:02d}:{:02d}'.format(mins, secs)
         self.master.change(SummaryFrame, {"duration": duration})
+
 
 class SummaryFrame(tk.Tk):
     def __init__(self, master, **kwargs):

@@ -1,5 +1,6 @@
 import time
 
+
 class Tabata:
     def __init__(self, num_sets=8, num_cycles=5, exercise_t=30, rest_t=15):
         self._num_sets = num_sets
@@ -76,7 +77,7 @@ class Tabata:
 
 
 def main():
-    tabata = Tabata(1, 1)
+    tabata = Tabata()
     tabata.start_exercise()
 
 
