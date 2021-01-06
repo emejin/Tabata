@@ -14,7 +14,7 @@ class View(tk.Tk):
 
     def change(self, frame, **kwargs):
         self.frame.grid_forget()
-        self.frame = frame(self, **kwargs)
+        self.frame = frame(self, kwargs)
         self.frame.grid()
 
     def update_text(self, obj, text):
@@ -152,16 +152,15 @@ class WorkoutFrame(tk.Frame):
         num_sets = self.master.model.get_num_sets()
         exercise_t = self.master.model.get_exercise_t()
 
-        mins, secs = divmod(num_cycles*num_sets*exercise_t, 60)
-        duration = '{:02d}:{:02d}'.format(mins, secs)
-        self.master.change(SummaryFrame, {"duration": duration})
+        self.master.change(SummaryFrame)
 
 
 class SummaryFrame(tk.Tk):
     def __init__(self, master, **kwargs):
         tk.Frame.__init__(self, master, **kwargs)
         master.title("Workout summary")
-        duration = kwargs["duration"]
+        mins, secs = divmod(self.master.model.num_cycles*self.master.model.num_sets*self.master.model.exercise_t, 60)
+        duration = '{:02d}:{:02d}'.format(mins, secs)
         print(duration)
 
         self.frame1 = tk.Frame(self, width=600, height=20, background="white")
